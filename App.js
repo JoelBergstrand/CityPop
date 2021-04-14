@@ -1,15 +1,18 @@
 /**
  * CityPop
- */
+*/
 
-import React from 'react';
-import {Text, } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { MainStackNavigator}  from "./navigators/MainStackNavigator";
 
 const App = () => {
   return (
-    <Text>Hello World</Text>
+    <NavigationContainer>
+      < MainStackNavigator />
+    </NavigationContainer>
   );
 }
-
 
 export default App;
