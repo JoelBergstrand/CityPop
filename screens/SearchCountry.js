@@ -10,8 +10,6 @@ const SearchCountry = ( {navigation} ) => {
     const [data,setData]=useState([]);
     const [loaded, setLoaded]=useState(false);
     const [URL, setURL]=useState('');
-    const [value, setValue]=useState('');
-
 
     useEffect(()=>{
         if (!URL) return;
