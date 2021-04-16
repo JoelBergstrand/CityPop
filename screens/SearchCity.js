@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 const SearchCity = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Search City Screen</Text>
+      <Text>Search by city </Text>
     </View>
   );
 }

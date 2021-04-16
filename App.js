@@ -7,7 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { MainStackNavigator}  from "./navigators/MainStackNavigator";
 
+
 const App = () => {
+  
   return (
     <NavigationContainer>
       < MainStackNavigator />

@@ -16,8 +16,12 @@ const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home}/>
+        <Stack.Navigator
+            screenOptions={{
+                headerTitle: "CityPop"
+            }}
+        >
+            <Stack.Screen options={{headerShown: false}} name="Home" component={Home}/>
             <Stack.Screen name="DisplayCity" component={DisplayCity}/>
             <Stack.Screen name="DisplayCountry" component={DisplayCountry}/>
             <Stack.Screen name="SearchCity" component={SearchCity}/>
