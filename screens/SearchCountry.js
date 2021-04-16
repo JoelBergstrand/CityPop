@@ -1,62 +1,61 @@
 
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { View, Text, FlatList, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
+import { buildUrl, getData } from '../lib/api';
 
+const SearchCountry = ( {navigation} ) => {
 
-function renderHeader() {
-
-    const URL = "http://api.geonames.org/searchJSON?q=london&maxRows10&username=citypop_2021"
-    const USR_NAME = "citypop_2021"
-
+    const [query,setQuery]=useState('');
     const [data,setData]=useState([]);
+    const [loaded, setLoaded]=useState(false);
+    const [URL, setURL]=useState('');
+    const [value, setValue]=useState('');
 
-    const getData=()=>{
-        fetch(URL)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            setData(data)
-        }) 
-        .catch(error => console.log(error));
-    }
+
     useEffect(()=>{
-        getData()
-    },[])
+        if (!URL) return;
 
-    return (
-        <View
-            style={{
-                backgroundColor: '#fff',
-                padding: 10,
-                marginVertical: 10,
-                borderRadius: 20
-            }}
-        >
+        getData(URL)
+            .then(data => {
+                setData(data)
+                setLoaded(true)
+            })
+            .catch(() => {
+                // Handle error
+            });
+    }, [URL])
+
+    useEffect(() => {
+        if(loaded){
+            setLoaded(false)
+            navigation.navigate({
+            name: 'DisplayCountry',
+            params: { country: data},
+            merge: true,
+            })
+        }
+    }, [loaded])
+
+    return (   
+
+    <View>
+        <Text>Search by country </Text>
+        
         <TextInput
             autoCapitalize="words"
             autoCorrect={false}
             clearButtonMode="always"
-            //value={query}
-            //onChangeText={queryText => handleSearch(queryText)}
+            onChangeText={text => setQuery(text)}
             placeholder="Search"
             style={{ backgroundColor: '#fff', paddingHorizontal: 20}}
         />
         <Button
         title="Search"
-        onPress={ () => console.log("Hello")}
-        />
-        </View>
-    )
-}
-
-const SearchCountry = () => {
-    return (   
-
-    <View>
-        <Text>Search by country </Text>
-        <FlatList
-        ListHeaderComponent={renderHeader}
+        onPress={ () => {
+            setLoaded(false)
+            setURL(buildUrl(query));
+        }}
         />
     </View>
     

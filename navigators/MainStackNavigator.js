@@ -24,8 +24,16 @@ const MainStackNavigator = () => {
             <Stack.Screen options={{headerShown: false}} name="Home" component={Home}/>
             <Stack.Screen name="DisplayCity" component={DisplayCity}/>
             <Stack.Screen name="DisplayCountry" component={DisplayCountry}/>
-            <Stack.Screen name="SearchCity" component={SearchCity}/>
-            <Stack.Screen name="SearchCountry" component={SearchCountry}/>
+            <Stack.Screen 
+                name="SearchCity" 
+                component={SearchCity}
+                initialParams={{city: []}}
+            />
+            <Stack.Screen 
+                name="SearchCountry" 
+                component={SearchCountry}
+                initialParams={{country: []}}
+            />
         </Stack.Navigator>
     );
 }
