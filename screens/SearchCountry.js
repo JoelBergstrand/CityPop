@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
-import { buildUrl, getData } from '../lib/api';
+import { getData, handleSearch } from '../lib/api';
 
 const SearchCountry = ( {navigation} ) => {
 
@@ -52,7 +52,7 @@ const SearchCountry = ( {navigation} ) => {
         title="Search"
         onPress={ () => {
             setLoaded(false)
-            setURL(buildUrl(query));
+            handleSearch(query, URL, setLoaded, setURL)
         }}
         />
     </View>

@@ -2,13 +2,15 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
-import { buildUrl, getData } from '../lib/api'
+
+import { getData, handleSearch } from '../lib/api'
+
 
 
 
 const SearchCity = ( {navigation} ) => {
 
-const [query,setQuery]=useState('');
+  const [query,setQuery]=useState('');
   const [data,setData]=useState([]);
   const [loaded, setLoaded]=useState(false);
   const [URL, setURL]=useState('');
@@ -29,6 +31,7 @@ const [query,setQuery]=useState('');
 
   useEffect(() => {
       if(loaded){
+          //Add error handling
           setLoaded(false)
           navigation.navigate({
             name: 'DisplayCity',
@@ -37,13 +40,6 @@ const [query,setQuery]=useState('');
           })
       }
   }, [loaded])
-
-  useEffect(() => {
-    setURL('')
-    setQuery('')
-    setData([])
-    setLoaded(false)
-  }, [navigation])
 
   return (   
 
@@ -62,7 +58,7 @@ const [query,setQuery]=useState('');
       title="Search"
       onPress={ () => {
           setLoaded(false)
-          setURL(buildUrl(query));
+          handleSearch(query, URL, setLoaded, setURL)
       }}
       />
   </View>
