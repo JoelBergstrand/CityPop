@@ -44,7 +44,7 @@ const SearchCity = ({ navigation }) => {
     }, [loaded])
 
     return(
-        <SearchScreen name="city" query={query} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
+        <SearchScreen name="city" query={query} loaded={loaded} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
     );
     
     /* return (   

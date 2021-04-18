@@ -38,12 +38,12 @@ const SearchCountry = ({ navigation }) => {
             }
             else {
                 Alert.alert("No match on query")
-            }
+            }   
         }
     }, [loaded])
 
     return(
-        <SearchScreen name="country" query={query} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
+        <SearchScreen name="country" query={query} loaded={loaded} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
     );
 }
 
