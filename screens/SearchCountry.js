@@ -1,17 +1,19 @@
 
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
-import { getData, handleSearch } from '../lib/api';
+import { Alert } from 'react-native';
 
-const SearchCountry = ( {navigation} ) => {
+import { getData} from '../lib/api';
+import SearchScreen from '../lib/SearchScreen';
 
-    const [query,setQuery]=useState('');
-    const [data,setData]=useState([]);
-    const [loaded, setLoaded]=useState(false);
-    const [URL, setURL]=useState('');
+const SearchCountry = ({ navigation }) => {
 
-    useEffect(()=>{
+    const [query, setQuery] = useState('');
+    const [data, setData] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    const [URL, setURL] = useState('');
+
+    useEffect(() => {
         if (!URL) return;
 
         getData(URL)
@@ -25,39 +27,24 @@ const SearchCountry = ( {navigation} ) => {
     }, [URL])
 
     useEffect(() => {
-        if(loaded){
-            setLoaded(false)
-            navigation.navigate({
-            name: 'DisplayCountry',
-            params: { country: data},
-            merge: true,
-            })
+        if (loaded) {
+            if (data.geonames.length >= 1) {
+                setLoaded(false)
+                navigation.navigate({
+                    name: 'DisplayCountry',
+                    params: { country: data },
+                    merge: true,
+                })
+            }
+            else {
+                Alert.alert("No match on query")
+            }
         }
     }, [loaded])
 
-    return (   
-
-    <View>
-        <Text>Search by country </Text>
-        
-        <TextInput
-            autoCapitalize="words"
-            autoCorrect={false}
-            clearButtonMode="always"
-            onChangeText={text => setQuery(text)}
-            placeholder="Search"
-            style={{ backgroundColor: '#fff', paddingHorizontal: 20}}
-        />
-        <Button
-        title="Search"
-        onPress={ () => {
-            setLoaded(false)
-            handleSearch(query, URL, setLoaded, setURL)
-        }}
-        />
-    </View>
-    
-  );
+    return(
+        <SearchScreen name="country" query={query} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
+    );
 }
 
 export default SearchCountry;
