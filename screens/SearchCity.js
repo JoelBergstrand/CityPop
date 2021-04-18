@@ -30,7 +30,6 @@ const SearchCity = ({ navigation }) => {
     useEffect(() => {
         if (loaded) {
             setLoaded(false)
-            console.log(data)
             if(data.geonames.length >= 1){
                 navigation.navigate({
                 name: 'DisplayCity',
@@ -46,30 +45,6 @@ const SearchCity = ({ navigation }) => {
     return(
         <SearchScreen name="city" query={query} loaded={loaded} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
     );
-    
-    /* return (   
-    
-      <View>
-          <Text>Search by city </Text>
-          
-          <TextInput
-              autoCapitalize="words"
-              autoCorrect={false}
-              clearButtonMode="always"
-              onChangeText={text => setQuery(text)}
-              placeholder="Search"
-              style={{ backgroundColor: '#fff', paddingHorizontal: 20}}
-          />
-          <Button
-          title="Search"
-          onPress={ () => {
-              setLoaded(false)
-              handleSearch(query, URL, setLoaded, setURL)
-          }}
-          />
-      </View>
-      
-    ); */
 }
 
 

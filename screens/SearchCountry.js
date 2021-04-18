@@ -31,8 +31,8 @@ const SearchCountry = ({ navigation }) => {
             if (data.geonames.length >= 1) {
                 setLoaded(false)
                 navigation.navigate({
-                    name: 'DisplayCountry',
-                    params: { country: data },
+                    name: "DisplayCountry",
+                    params: { country: data, place: query },
                     merge: true,
                 })
             }
