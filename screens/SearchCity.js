@@ -30,6 +30,7 @@ const SearchCity = ({ navigation }) => {
     useEffect(() => {
         if (loaded) {
             setLoaded(false)
+            console.log(data)
             if(data.geonames.length >= 1){
                 navigation.navigate({
                 name: 'DisplayCity',
