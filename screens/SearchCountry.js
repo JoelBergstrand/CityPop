@@ -8,7 +8,7 @@ import SearchScreen from '../lib/SearchScreen';
 
 const SearchCountry = ({ navigation }) => {
 
-    const [query, setQuery] = useState('');
+/*     const [query, setQuery] = useState('');
     const [data, setData] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [URL, setURL] = useState('');
@@ -42,8 +42,13 @@ const SearchCountry = ({ navigation }) => {
         }
     }, [loaded])
 
+ */    
+    //query={query} loaded={loaded} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL}
     return(
-        <SearchScreen name="country" query={query} loaded={loaded} setQuery={setQuery} setLoaded={setLoaded} URL={URL} setURL={setURL} />
+        <SearchScreen 
+            navigation={navigation}
+            name="Country"       
+        />
     );
 }
 

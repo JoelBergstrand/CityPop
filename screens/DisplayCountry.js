@@ -8,7 +8,7 @@ const DisplayCountry = ( { navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.title}>{route.params.place}</Text>
       <FlatList
-        data={route.params.country.geonames.sort((a, b) => {return b.population - a.population})}
+        data={route.params.values.geonames.sort((a, b) => {return b.population - a.population})}
         keyExtractor={item => item.name}
         renderItem={({ item }) => (
           <View> 
@@ -17,7 +17,7 @@ const DisplayCountry = ( { navigation, route }) => {
               onPress={ () => 
                 navigation.navigate({
                   name:"DisplayCity",
-                  params: { city: item },
+                  params: { values: item },
                   merge: true,
                 })}
             >
