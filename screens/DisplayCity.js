@@ -3,16 +3,20 @@ import numbro from 'numbro';
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const DisplayCity = ( {route }) => {
+/*
+* DisplayCity
+* Displays the population of a city
+*/
+
+const DisplayCity = ({ route }) => {
   const city = route.params.values
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{city.name} </Text>
       <View style={styles.box}>
         <Text style={styles.boxTitle}>POPULATION</Text>
-        <Text style={styles.boxValue}>{numbro(city.population).format({thousandSeparated: true})}</Text>
+        <Text style={styles.boxValue}>{numbro(city.population).format({ thousandSeparated: true })}</Text>
       </View>
-      
     </View>
   );
 }

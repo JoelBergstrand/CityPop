@@ -14,6 +14,9 @@ import SearchCountry from "../screens/SearchCountry";
 
 const Stack = createStackNavigator();
 
+/*
+* Builds screen stack of all needed screen needed for the application.
+*/
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator

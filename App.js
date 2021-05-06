@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { MainStackNavigator}  from "./navigators/MainStackNavigator";
 
-
+// Initalizes the navigation structure
 const App = () => {
   
   return (

@@ -1,7 +1,9 @@
-
 import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
+/*
+* Creates HomeScreen with buttons for City and Country search.
+*/ 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>

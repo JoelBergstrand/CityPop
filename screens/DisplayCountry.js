@@ -2,6 +2,12 @@
 import * as React from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 
+/*
+* DisplayCountry
+* Displays the 10 largest cities in the search for country in a flatlist.
+* Each city is represented by a pressable button which navigates to the citydisplay screen.
+*/
+
 const DisplayCountry = ( { navigation, route }) => {
 
   return (
