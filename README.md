@@ -7,9 +7,10 @@ CityPop is a population presentation app for andriod built using React Native.
 Install a React Native enviroment
 https://reactnative.dev/docs/environment-setup
 
-Install npm verion 7.12.0 
+Install npm verion 7.12.0 or higher
 
-```git clone git@github.com:JoelBergstrand/CityPop.git
+```
+git clone git@github.com:JoelBergstrand/CityPop.git
 
 cd CityPop
 
@@ -17,4 +18,5 @@ npm install
 
 npx react-native start 
 
-npx react-native run-android```
+npx react-native run-android
+```
